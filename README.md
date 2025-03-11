@@ -34,6 +34,13 @@ To run the unit tests, you can use the following command:
 python3 test_maxmin.py
 ```
 
+# Divide and conquer approach
+
+The diagram below illustrates the [divide and conquer](https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm) approach used by the Max-Min Selection algorithm.
+
+![](misc/divide-and-conquer.png)
+Excalidraw source available [here](misc/divide-and-conquer.excalidraw).
+
 # Control flow graph
 
 ![](misc/cyclomatic-complexity.png)
