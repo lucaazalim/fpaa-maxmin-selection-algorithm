@@ -52,6 +52,73 @@ Considering `𝑀 = 𝐸 − 𝑁 + 2𝑃`, where 𝐸 is the number of edges (1
 
 ## Asymptotic complexity
 
-- **Best case:** `O(1)`, when the array has less then 3 elements.
-- **Average/Worst case:**
-- **Space complexity:**
+### Operation Count Method
+
+The algorithm recursively divides the array into two halves until the sublists contain only one or two elements. For each division, it performs comparisons to combine the maximum and minimum values from each half.
+
+- **Divide**: The array of size `n` is divided into two halves of size `n/2`.
+- **Combine**: After each recursive call, only **2** comparisons are needed to combine the results from both halves.
+
+So, the total number of comparisons `C(n)` can be described by the following recurrence:
+
+```mathematica
+C(n) = C(n/2) + C(n/2) + 2 for n > 2
+C(2) = 1 (base case: one comparison between two elements)
+C(1) = 0 (base case: a single element is both min and max)
+```
+
+**Solving**:  
+Each division creates two subproblems with `n/2` elements each.  
+Each merge step does **2** constant-time comparisons.
+
+Thus, we get:
+
+```mathematica
+C(n) = 2 * C(n/2) + 2
+```
+
+From this pattern, the total number of comparisons grows linearly with the size of the input, so the time complexity is **O(n)**.
+
+---
+
+### Master Theorem
+
+The recurrence has the form:
+
+```mathematica
+T(n) = 2T(n/2) + O(1)
+```
+
+Comparing with the standard Master Theorem form:
+
+```mathematica
+T(n) = aT(n/b) + O(n^d)
+```
+
+We have:
+
+- a = 2
+- b = 2
+- d = 0 (since the additional work outside the recursive calls is constant, O(1))
+
+Now calculating `log_b(a)` we get:
+
+```mathematica
+log₂(2) = 1
+```
+
+Since `d = 0 < 1`, we fall into **Case 1** of the Master Theorem.
+
+Thus, the complexity is:
+
+```mathematica
+T(n) = O(n^1) = O(n)
+```
+
+---
+
+### Summary
+
+- **Best case**: O(n)  
+- **Worst case**: O(n)  
+- **Average case**: O(n)
